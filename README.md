@@ -32,7 +32,7 @@ CREATE TABLE cidade (
 
 -- Tabela bairro
 CREATE TABLE bairro (
-    cd_bairro INT IDENTITY NOT NULL,
+    cd_bairro INT  NOT NULL,
     nm_bairro VARCHAR(50) NOT NULL,
     cd_cidade INT NOT NULL,
 
@@ -45,7 +45,7 @@ CREATE TABLE bairro (
 
 -- Tabela usuario
 CREATE TABLE usuario (
-    cd_usuario INT IDENTITY NOT NULL,
+    cd_usuario INT  NOT NULL,
     nm_usuario VARCHAR(100) NOT NULL,
     idade SMALLINT NOT NULL,
     endereco VARCHAR(70) NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE usuario (
 
 -- Tabela quiz
 CREATE TABLE quiz (
-    cd_quiz INT IDENTITY NOT NULL,
+    cd_quiz INT  NOT NULL,
     nm_quiz VARCHAR(100) NOT NULL,
     ds_quiz VARCHAR(200) NOT NULL,
     tema VARCHAR(50) NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE quiz (
 
 -- Tabela questao
 CREATE TABLE questao (
-    cd_questao INT IDENTITY NOT NULL,
+    cd_questao INT  NOT NULL,
     cd_quiz INT NOT NULL,
     valor_questao SMALLINT NOT NULL,
     ds_questao VARCHAR(400) NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE questao (
 
 -- Tabela opcao_questao
 CREATE TABLE opcao_questao (
-    cd_opcao_questao INT IDENTITY NOT NULL,
+    cd_opcao_questao INT  NOT NULL,
     cd_questao INT NOT NULL,
     ds_opcao VARCHAR(200) NOT NULL,
     is_correta BIT NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE opcao_questao (
 
 -- Tabela resposta_usuario
 CREATE TABLE resposta_usuario (
-    cd_resposta_usuario INT IDENTITY NOT NULL,
+    cd_resposta_usuario INT  NOT NULL,
     cd_usuario INT NOT NULL,
     cd_questao INT NOT NULL,
     cd_opcao_questao INT NOT NULL,
