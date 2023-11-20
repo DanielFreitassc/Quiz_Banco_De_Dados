@@ -128,7 +128,7 @@ CREATE TABLE resposta_usuario (
 	REFERENCES opcao_questao (cd_opcao_questao)
 );
 ```
-# Script que popula as tabelas do Banco de dados (DML)
+# Script que popula as tabelas do Banco de dados (DML) (7 Linhas de dados)
 ```
 -- Inserir dados na tabela cidade
 INSERT INTO cidade (cd_cidade, nm_cidade, UF) VALUES
@@ -210,39 +210,16 @@ INSERT INTO resposta_usuario (cd_resposta_usuario, cd_usuario, cd_questao, cd_op
 ```
 # Principais consultas mapeadas baseadas em regras de negócio (DQL) (mínimo 6)
 ```
-Tabela cidade - Consulta para Obter Todas as Cidades:
+SELECT b.cd_bairro, b.nm_bairro, c.nm_cidade, c.UF
+FROM bairro b
+INNER JOIN cidade c ON b.cd_cidade = c.cd_cidade;
 
+```
+```
+SELECT u.cd_usuario, u.nm_usuario, u.idade, u.endereco, u.numero, u.cep, u.complemento, u.referencia,
+       b.nm_bairro, c.nm_cidade, c.UF, u.telefone, u.e_mail
+FROM usuario u
+INNER JOIN bairro b ON u.cd_bairro = b.cd_bairro
+INNER JOIN cidade c ON u.cd_cidade = c.cd_cidade;
 
-SELECT * FROM cidade;
-Tabela bairro - Consulta para Obter Bairros em uma Cidade Específica:
-
-
-SELECT * FROM bairro WHERE cd_cidade = 1; -- Substitua 1 pelo ID da cidade desejada
-Tabela usuario - Consulta para Obter Informações de Usuários em uma Cidade Específica:
-
-
-SELECT * FROM usuario
-WHERE cd_cidade = 1; -- Substitua 1 pelo ID da cidade desejada
-Tabela quiz - Consulta para Obter Todos os Quizzes:
-
-
-
-SELECT * FROM quiz;
-Tabela questao - Consulta para Obter Questões de um Quiz Específico:
-
-
-SELECT * FROM questao WHERE cd_quiz = 1; -- Substitua 1 pelo ID do quiz desejado
-Tabela opcao_questao - Consulta para Obter Opções de uma Questão Específica:
-
-
-SELECT * FROM opcao_questao WHERE cd_questao = 1; -- Substitua 1 pelo ID da questão desejada
-Tabela resposta_usuario - Consulta para Obter Respostas de um Usuário Específico:
-
-
-SELECT * FROM resposta_usuario WHERE cd_usuario = 1; -- Substitua 1 pelo ID do usuário desejado
-
-
-SELECT count(*) FROM Usuario
-
-WHERE UF = "SP"
 ```
