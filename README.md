@@ -9,6 +9,12 @@
 
 
 # Modelo ER Físico
+
+[MODELO FISICO.pdf](https://github.com/DanielFreitassc/Quiz_Banco_De_Dados/files/13420037/MODELO.FISICO.pdf)
+
+
+
+
 ....
 # Dicionário de Dados
 ...
