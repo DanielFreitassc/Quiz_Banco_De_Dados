@@ -154,40 +154,38 @@ INSERT INTO resposta_usuario (cd_usuario, cd_questao, cd_opcao_questao, dt_fim) 
 ```
 Tabela cidade - Consulta para Obter Todas as Cidades:
 
-sql
-Copy code
+
 SELECT * FROM cidade;
 Tabela bairro - Consulta para Obter Bairros em uma Cidade Específica:
 
-sql
-Copy code
+
 SELECT * FROM bairro WHERE cd_cidade = 1; -- Substitua 1 pelo ID da cidade desejada
 Tabela usuario - Consulta para Obter Informações de Usuários em uma Cidade Específica:
 
-sql
-Copy code
+
 SELECT * FROM usuario
 WHERE cd_cidade = 1; -- Substitua 1 pelo ID da cidade desejada
 Tabela quiz - Consulta para Obter Todos os Quizzes:
 
-sql
-Copy code
+
+
 SELECT * FROM quiz;
 Tabela questao - Consulta para Obter Questões de um Quiz Específico:
 
-sql
-Copy code
+
 SELECT * FROM questao WHERE cd_quiz = 1; -- Substitua 1 pelo ID do quiz desejado
 Tabela opcao_questao - Consulta para Obter Opções de uma Questão Específica:
 
-sql
-Copy code
+
 SELECT * FROM opcao_questao WHERE cd_questao = 1; -- Substitua 1 pelo ID da questão desejada
 Tabela resposta_usuario - Consulta para Obter Respostas de um Usuário Específico:
 
-sql
-Copy code
+
 SELECT * FROM resposta_usuario WHERE cd_usuario = 1; -- Substitua 1 pelo ID do usuário desejado
 
+
+SELECT count(*) FROM Usuario
+
+WHERE UF = "SP"
 ```
 ![bd](https://github.com/DanielFreitassc/Quiz_Banco_De_Dados/assets/129224303/e1e608cd-36c2-467b-83f9-84cb012435ef)
