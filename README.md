@@ -123,25 +123,7 @@ CREATE TABLE resposta_usuario (
 ```
 # Script que popula as tabelas do Banco de dados (DML)
 ```
-INSERT INTO Usuario (id, nome, email, senha) VALUES (1, 'João', 'joao@email.com', '123456');
-INSERT INTO Usuario (id, nome, email, senha) VALUES (2, 'Maria', 'maria@email.com', 'abcdef');
-INSERT INTO Usuario (id, nome, email, senha) VALUES (3, 'Pedro', 'pedro@email.com', 'qwerty');
 
-INSERT INTO Quiz (id, título, descrição) VALUES (1, 'Quiz de Programação', 'Teste seu conhecimento em programação.');
-INSERT INTO Quiz (id, título, descrição) VALUES (2, 'Quiz de Matemática', 'Teste seu conhecimento em matemática.');
-INSERT INTO Quiz (id, título, descrição) VALUES (3, 'Quiz de Geografia', 'Teste seu conhecimento em geografia.');
-
-INSERT INTO Rel (id, título, descrição) VALUES (1, 'Relacionamento 1', 'Relacionamento 1.');
-INSERT INTO Rel (id, título, descrição) VALUES (2, 'Relacionamento 2', 'Relacionamento 2.');
-INSERT INTO Rel (id, título, descrição) VALUES (3, 'Relacionamento 3', 'Relacionamento 3.');
-
-INSERT INTO Rel_Quiz (id, quiz_id, rel_id) VALUES (1, 1, 1);
-INSERT INTO Rel_Quiz (id, quiz_id, rel_id) VALUES (2, 2, 2);
-INSERT INTO Rel_Quiz (id, quiz_id, rel_id) VALUES (3, 3, 3);
-
-INSERT INTO Rel_Usuario (id, rel_id, usuario_id) VALUES (1, 1, 1);
-INSERT INTO Rel_Usuario (id, rel_id, usuario_id) VALUES (2, 2, 2);
-INSERT INTO Rel_Usuario (id, rel_
 ```
 # Principais consultas mapeadas baseadas em regras de negócio (DQL) (mínimo 6)
 ```
