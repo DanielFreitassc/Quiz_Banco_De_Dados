@@ -1,3 +1,12 @@
+```
+DROP TABLE Customers
+```
+```
+DROP TABLE Orders
+```
+```
+DROP TABLE Shippings
+```
 # Quiz Banco De Dados
 > Paulo Vinícius, Daniel Freitas, Rhyan, Nathan, Pablo
 
