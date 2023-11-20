@@ -3,12 +3,12 @@
 
 # Criar o banco de dados de um quiz 
 
-# Modelo ER Conceitual
+# Modelo ER Conceitual(5 Entidades)
 
 ![bd](https://github.com/DanielFreitassc/Quiz_Banco_De_Dados/assets/129224303/e1e608cd-36c2-467b-83f9-84cb012435ef)
 
 
-# Modelo ER Físico
+# Modelo ER Físico(5 Entidades)
 
 [MODELO FISICO.pdf](https://github.com/DanielFreitassc/Quiz_Banco_De_Dados/files/13420037/MODELO.FISICO.pdf)
 
