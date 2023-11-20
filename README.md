@@ -130,15 +130,82 @@ CREATE TABLE resposta_usuario (
 ```
 # Script que popula as tabelas do Banco de dados (DML)
 ```
-INSERT INTO cidade (cd_cidade,nm_cidade, UF) VALUES
-    (1,'São Paulo', 'SP'),
-    (2,'Rio de Janeiro', 'RJ'),
-    (3,'Belo Horizonte', 'MG'),
-    (4,'Brasília', 'DF'),
-    (5,'Salvador', 'BA'),
-    (6,'Curitiba', 'PR'),
-    (7,'Recife', 'PE');
+-- Inserir dados na tabela cidade
+INSERT INTO cidade (cd_cidade, nm_cidade, UF) VALUES
+    (1, 'São Paulo', 'SP'),
+    (2, 'Rio de Janeiro', 'RJ'),
+    (3, 'Belo Horizonte', 'MG'),
+    (4, 'Brasília', 'DF'),
+    (5, 'Fortaleza', 'CE'),
+    (6, 'Manaus', 'AM'),
+    (7, 'Santos', 'SP');
 
+-- Inserir dados na tabela bairro
+INSERT INTO bairro (cd_bairro, nm_bairro, cd_cidade) VALUES
+    (1, 'Centro', 1),
+    (2, 'Copacabana', 2),
+    (3, 'Savassi', 3),
+    (4, 'Asa Sul', 4),
+    (5, 'Barra', 5),
+    (6, 'Batel', 6),
+    (7, 'Boa Viagem', 7);
+
+-- Inserir dados na tabela usuario
+INSERT INTO usuario (cd_usuario, nm_usuario, idade, endereco, numero, cep, complemento, referencia, cd_bairro, cd_cidade, UF, telefone, e_mail) VALUES
+    (1, 'João Silva', 30, 'Rua A', 123, '12345-678', 'Apto 101', 'Próximo ao mercado', 1, 1, 'SP', '123456789', 'joao@email.com'),
+    (2, 'Maria Oliveira', 25, 'Rua B', 456, '54321-876', 'Casa 202', 'Próximo à escola', 2, 2, 'RJ', '987654321', 'maria@email.com'),
+    (3, 'Carlos Santos', 35, 'Av. C', 789, '98765-432', 'Sala 101', 'Ao lado do hospital', 3, 3, 'MG', '654321987', 'carlos@email.com'),
+    (4, 'Ana Souza', 28, 'Rua D', 101, '12345-678', 'Apto 303', 'Próximo ao parque', 4, 4, 'DF', '123456789', 'ana@email.com'),
+    (5, 'Felipe Lima', 22, 'Av. E', 111, '87654-321', 'Casa 404', 'Próximo à estação', 5, 5, 'BA', '987654321', 'felipe@email.com'),
+    (6, 'José Oliveira', 40, 'Rua F', 789, '54321-876', 'Apto 505', 'Próximo ao shopping', 6, 6, 'PR', '987654321', 'jose@email.com'),
+    (7, 'Fernanda Silva', 33, 'Av. G', 222, '98765-432', 'Casa 606', 'Próximo ao parque', 7, 7, 'PE', '123456789', 'fernanda@email.com');
+
+-- Inserir dados na tabela quiz
+INSERT INTO quiz (cd_quiz, nm_quiz, ds_quiz, tema) VALUES
+    (1, 'Quiz de Matemática', 'Teste seus conhecimentos em matemática.', 'Matemática'),
+    (2, 'Quiz de História', 'Teste seus conhecimentos em história mundial.', 'História'),
+    (3, 'Quiz de Geografia', 'Teste seus conhecimentos em geografia mundial.', 'Geografia'),
+    (4, 'Quiz de Ciências', 'Teste seus conhecimentos em ciências naturais.', 'Ciências'),
+    (5, 'Quiz de Literatura', 'Teste seus conhecimentos em literatura mundial.', 'Literatura'),
+    (6, 'Quiz de Tecnologia', 'Teste seus conhecimentos em tecnologia.', 'Tecnologia'),
+    (7, 'Quiz de Esportes', 'Teste seus conhecimentos em esportes.', 'Esportes');
+
+-- Inserir dados na tabela questao
+INSERT INTO questao (cd_questao, cd_quiz, valor_questao, ds_questao) VALUES
+    (1, 1, 10, 'Qual é a fórmula da área de um triângulo?'),
+    (2, 2, 15, 'Quem foi o primeiro presidente do Brasil?'),
+    (3, 3, 20, 'Qual é a capital da França?'),
+    (4, 4, 25, 'Qual é o componente mais abundante na atmosfera da Terra?'),
+    (5, 5, 30, 'Quem escreveu "Dom Quixote"?'),
+    (6, 6, 10, 'O que significa a sigla HTML?'),
+    (7, 7, 15, 'Qual esporte é conhecido como "esporte bretão"?');
+
+-- Inserir dados na tabela opcao_questao
+INSERT INTO opcao_questao (cd_opcao_questao, cd_questao, ds_opcao, is_correta) VALUES
+    (1, 1, 'A = bh/2', 1),
+    (2, 1, 'A = πr²', 0),
+    (3, 2, 'Getúlio Vargas', 1),
+    (4, 2, 'Juscelino Kubitschek', 0),
+    (5, 3, 'Paris', 1),
+    (6, 3, 'Londres', 0),
+    (7, 4, 'Nitrogênio', 1),
+    (8, 4, 'Oxigênio', 0),
+    (9, 5, 'Miguel de Cervantes', 1),
+    (10, 5, 'William Shakespeare', 0),
+    (11, 6, 'Hypertext Markup Language', 1),
+    (12, 6, 'High-Level Programming Language', 0),
+    (13, 7, 'Futebol', 1),
+    (14, 7, 'Críquete', 0);
+
+-- Inserir dados na tabela resposta_usuario
+INSERT INTO resposta_usuario (cd_resposta_usuario, cd_usuario, cd_questao, cd_opcao_questao, dt_fim) VALUES
+    (1, 1, 1, 1, '2023-11-20 12:30:00'),
+    (2, 2, 2, 3, '2023-11-21 14:45:00'),
+    (3, 3, 3, 5, '2023-11-22 10:30:00'),
+    (4, 4, 4, 7, '2023-11-23 18:15:00'),
+    (5, 5, 5, 9, '2023-11-24 22:00:00'),
+    (6, 6, 6, 2, '2023-11-25 16:30:00'),
+    (7, 7, 7, 4, '2023-11-26 14:00:00');
 
 ```
 # Principais consultas mapeadas baseadas em regras de negócio (DQL) (mínimo 6)
