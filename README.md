@@ -1,12 +1,3 @@
-```
-DROP TABLE Customers
-```
-```
-DROP TABLE Orders
-```
-```
-DROP TABLE Shippings
-```
 # Quiz Banco De Dados
 > Paulo Vinícius, Daniel Freitas, Rhyan, Nathan, Pablo
 
@@ -244,4 +235,35 @@ FROM usuario u
 INNER JOIN bairro b ON u.cd_bairro = b.cd_bairro
 INNER JOIN cidade c ON u.cd_cidade = c.cd_cidade;
 
+```
+# Deletar todas tableas
+```
+-- Desativar temporariamente as restrições de chave estrangeira
+EXEC sp_MSforeachtable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL';
+
+-- Excluir as tabelas em ordem inversa de dependência
+
+-- Tabela resposta_usuario
+DROP TABLE IF EXISTS resposta_usuario;
+
+-- Tabela opcao_questao
+DROP TABLE IF EXISTS opcao_questao;
+
+-- Tabela questao
+DROP TABLE IF EXISTS questao;
+
+-- Tabela quiz
+DROP TABLE IF EXISTS quiz;
+
+-- Tabela usuario
+DROP TABLE IF EXISTS usuario;
+
+-- Tabela bairro
+DROP TABLE IF EXISTS bairro;
+
+-- Tabela cidade
+DROP TABLE IF EXISTS cidade;
+
+-- Ativar novamente as restrições de chave estrangeira
+EXEC sp_MSforeachtable 'ALTER TABLE ? WITH CHECK CHECK CONSTRAINT ALL';
 ```
