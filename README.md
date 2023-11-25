@@ -161,13 +161,13 @@ INSERT INTO bairro (nm_bairro, cd_cidade) VALUES
 
 -- Populando a tabela usuario
 INSERT INTO usuario (nm_usuario, idade, endereco, numero, cep, complemento, referencia, cd_bairro, cd_cidade, UF, telefone, e_mail) VALUES
-    ('João Silva', 30, 'Rua A', 123, '12345-678', 'Apto 101', 'Próximo ao mercado', 1, 1, 'SP', '12345678', 'joao@email.com'),
-    ('Maria Santos', 25, 'Av. B', 456, '54321-876', 'Casa 202', 'Próximo à escola', 2, 2, 'RJ', '98765432', 'maria@email.com'),
-    ('Carlos Oliveira', 40, 'Rua C', 789, '98765-432', NULL, 'Próximo ao parque', 3, 3, 'MG', '87654321', 'carlos@email.com'),
-    ('Ana Pereira', 35, 'Av. D', 101, '13579-246', 'Bloco B', 'Próximo à praia', 4, 4, 'RS', '76543210', 'ana@email.com'),
-    ('Lucas Santos', 28, 'Rua E', 222, '24680-135', 'Casa 303', 'Próximo à academia', 5, 5, 'BA', '43210987', 'lucas@email.com'),
-    ('Mariana Oliveira', 32, 'Av. F', 333, '36985-741', 'Apto 404', 'Próximo ao shopping', 6, 6, 'DF', '9876-1234', 'mariana@email.com'),
-    ('Rafael Lima', 27, 'Rua G', 444, '14785-369', 'Casa 505', 'Próximo ao teatro', 7, 7, 'CE', '12345678', 'rafael@email.com');
+    ('João Silva', 30, 'Rua A', 123, '12345678', 'Apto 101', 'Próximo ao mercado', 1, 1, 'SP', '1234-5678', 'joao@email.com'),
+    ('Maria Santos', 25, 'Av. B', 456, '54321876', 'Casa 202', 'Próximo à escola', 2, 2, 'RJ', '9876-5432', 'maria@email.com'),
+    ('Carlos Oliveira', 40, 'Rua C', 789, '98765432', NULL, 'Próximo ao parque', 3, 3, 'MG', '8765-4321', 'carlos@email.com'),
+    ('Ana Pereira', 35, 'Av. D', 101, '13579246', 'Bloco B', 'Próximo à praia', 4, 4, 'RS', '7654-3210', 'ana@email.com'),
+    ('Lucas Santos', 28, 'Rua E', 222, '24680135', 'Casa 303', 'Próximo à academia', 5, 5, 'BA', '4321-0987', 'lucas@email.com'),
+    ('Mariana Oliveira', 32, 'Av. F', 333, '36985741', 'Apto 404', 'Próximo ao shopping', 6, 6, 'DF', '9876-1234', 'mariana@email.com'),
+    ('Rafael Lima', 27, 'Rua G', 444, '14785369', 'Casa 505', 'Próximo ao teatro', 7, 7, 'CE', '1234-5678', 'rafael@email.com');
 
 -- Populando a tabela quiz
 INSERT INTO quiz (nm_quiz, ds_quiz, tema) VALUES
@@ -228,6 +228,7 @@ INSERT INTO opcao_questao (cd_questao, ds_opcao, is_correta) VALUES
     (13, 'Futebol', 0),
     (14, 'Futebol', 1),
     (14, 'Críquete', 0)
+
 ```
 # Principais consultas mapeadas baseadas em regras de negócio (DQL) (mínimo 6)
 ```
