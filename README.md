@@ -219,6 +219,15 @@ INSERT INTO opcao_questao (cd_questao, ds_opcao, is_correta) VALUES
     (13, 'Futebol', 0),
     (14, 'Futebol', 1),
     (14, 'Críquete', 0)
+-- Populando a tabela resposta_usuario
+INSERT INTO resposta_usuario (cd_usuario, cd_questao, cd_opcao_questao, dt_inicio, dt_fim) VALUES
+    (1, 1, 1, '2023-11-25T08:00:00', '2023-11-25T08:05:00'),
+    (2, 2, 4, '2023-11-25T09:30:00', '2023-11-25T09:35:00'),
+    (3, 3, 7, '2023-11-25T10:45:00', '2023-11-25T10:50:00'),
+    (4, 4, 9, '2023-11-25T12:15:00', '2023-11-25T12:20:00'),
+    (5, 5, 12, '2023-11-25T14:00:00', '2023-11-25T14:05:00'),
+    (6, 6, 14, '2023-11-25T15:20:00', '2023-11-25T15:25:00'),
+    (7, 7, 16, '2023-11-25T16:45:00', NULL);
 
 ```
 # Principais consultas mapeadas baseadas em regras de negócio (DQL) (mínimo 6)
