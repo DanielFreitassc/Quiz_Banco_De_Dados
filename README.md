@@ -231,20 +231,92 @@ INSERT INTO resposta_usuario (cd_usuario, cd_questao, cd_opcao_questao, dt_inici
 
 ```
 # Principais consultas mapeadas baseadas em regras de negócio (DQL) (mínimo 6)
+## Listar todas as respostas de um usuário específico:
 ```
-SELECT b.cd_bairro, b.nm_bairro, c.nm_cidade, c.UF
-FROM bairro b
-INNER JOIN cidade c ON b.cd_cidade = c.cd_cidade;
-
+SELECT * FROM resposta_usuario WHERE cd_usuario = <id_usuario>;
 ```
+## Obter detalhes completos de uma resposta específica, incluindo informações do usuário, questão e opção escolhida:
 ```
-SELECT u.cd_usuario, u.nm_usuario, u.idade, u.endereco, u.numero, u.cep, u.complemento, u.referencia,
-       b.nm_bairro, c.nm_cidade, c.UF, u.telefone, u.e_mail
+SELECT ru.*, u.nm_usuario, q.ds_questao, oq.ds_opcao
+FROM resposta_usuario ru
+JOIN usuario u ON ru.cd_usuario = u.cd_usuario
+JOIN questao q ON ru.cd_questao = q.cd_questao
+JOIN opcao_questao oq ON ru.cd_opcao_questao = oq.cd_opcao_questao
+WHERE ru.cd_resposta_usuario = <id_resposta>;
+```
+## Contar o número total de respostas para cada usuário:
+```
+SELECT u.nm_usuario, COUNT(ru.cd_resposta_usuario) as total_respostas
 FROM usuario u
-INNER JOIN bairro b ON u.cd_bairro = b.cd_bairro
-INNER JOIN cidade c ON u.cd_cidade = c.cd_cidade;
-
+LEFT JOIN resposta_usuario ru ON u.cd_usuario = ru.cd_usuario
+GROUP BY u.nm_usuario;
 ```
+## Calcular a média de tempo que os usuários levam para responder as questões:
+```
+SELECT u.nm_usuario, AVG(DATEDIFF(SECOND, ru.dt_inicio, ru.dt_fim)) as media_tempo_resposta
+FROM usuario u
+JOIN resposta_usuario ru ON u.cd_usuario = ru.cd_usuario
+WHERE ru.dt_fim IS NOT NULL
+GROUP BY u.nm_usuario;
+```
+## Encontrar as respostas corretas e incorretas de um usuário em um quiz específico:
+```
+SELECT ru.cd_resposta_usuario, q.ds_questao, oq.ds_opcao, oq.is_correta
+FROM resposta_usuario ru
+JOIN questao q ON ru.cd_questao = q.cd_questao
+JOIN opcao_questao oq ON ru.cd_opcao_questao = oq.cd_opcao_questao
+WHERE ru.cd_usuario = <id_usuario> AND q.cd_quiz = <id_quiz>;
+```
+## Listar os usuários que ainda não responderam um quiz específico:
+```
+SELECT u.nm_usuario
+FROM usuario u
+WHERE u.cd_usuario NOT IN (
+    SELECT DISTINCT ru.cd_usuario
+    FROM resposta_usuario ru
+    JOIN questao q ON ru.cd_questao = q.cd_questao
+    WHERE q.cd_quiz = <id_quiz>
+);
+```
+## Listar todos os usuários que responderam a um quiz específico:
+```
+SELECT DISTINCT u.nm_usuario
+FROM usuario u
+JOIN resposta_usuario ru ON u.cd_usuario = ru.cd_usuario
+JOIN questao q ON ru.cd_questao = q.cd_questao
+WHERE q.cd_quiz = <id_quiz>;
+```
+## Contar o número de respostas corretas e incorretas para cada questão em um quiz específico
+```
+SELECT q.ds_questao, 
+       SUM(CASE WHEN oq.is_correta = 1 THEN 1 ELSE 0 END) as respostas_corretas,
+       SUM(CASE WHEN oq.is_correta = 0 THEN 1 ELSE 0 END) as respostas_incorretas
+FROM questao q
+LEFT JOIN opcao_questao oq ON q.cd_questao = oq.cd_questao
+LEFT JOIN resposta_usuario ru ON q.cd_questao = ru.cd_questao
+WHERE q.cd_quiz = <id_quiz>
+GROUP BY q.ds_questao;
+```
+## Listar todos os quizzes e a média de respostas corretas por questão:
+```
+SELECT q.nm_quiz,
+       AVG(CAST(CASE WHEN oq.is_correta = 1 THEN 1 ELSE 0 END AS FLOAT)) as media_respostas_corretas
+FROM quiz q
+LEFT JOIN questao qu ON q.cd_quiz = qu.cd_quiz
+LEFT JOIN opcao_questao oq ON qu.cd_questao = oq.cd_questao
+GROUP BY q.nm_quiz;
+```
+## Exibir todas as tabelas
+```
+SELECT * FROM bairro
+SELECT * FROM cidade
+SELECT * FROM opcao_questao
+SELECT * FROM questao
+SELECT * FROM quiz
+SELECT * FROM resposta_usuario
+SELECT * FROM usuario
+```
+
 # Deletar todas tableas
 ```
 -- Desativar temporariamente as restrições de chave estrangeira
