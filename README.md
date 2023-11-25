@@ -139,83 +139,95 @@ CREATE TABLE resposta_usuario (
 ```
 # Script que popula as tabelas do Banco de dados (DML) (7 Linhas de dados)
 ```
--- Inserir dados na tabela cidade
-INSERT INTO cidade (cd_cidade, nm_cidade, UF) VALUES
-    (1, 'São Paulo', 'SP'),
-    (2, 'Rio de Janeiro', 'RJ'),
-    (3, 'Belo Horizonte', 'MG'),
-    (4, 'Brasília', 'DF'),
-    (5, 'Fortaleza', 'CE'),
-    (6, 'Manaus', 'AM'),
-    (7, 'Santos', 'SP');
+-- Populando a tabela cidade
+INSERT INTO cidade (nm_cidade, UF) VALUES 
+    ('São Paulo', 'SP'),
+    ('Rio de Janeiro', 'RJ'),
+    ('Belo Horizonte', 'MG'),
+    ('Porto Alegre', 'RS'),
+    ('Salvador', 'BA'),
+    ('Brasília', 'DF'),
+    ('Fortaleza', 'CE');
 
--- Inserir dados na tabela bairro
-INSERT INTO bairro (cd_bairro, nm_bairro, cd_cidade) VALUES
-    (1, 'Centro', 1),
-    (2, 'Copacabana', 2),
-    (3, 'Savassi', 3),
-    (4, 'Asa Sul', 4),
-    (5, 'Barra', 5),
-    (6, 'Batel', 6),
-    (7, 'Boa Viagem', 7);
+-- Populando a tabela bairro
+INSERT INTO bairro (nm_bairro, cd_cidade) VALUES
+    ('Centro', 1),
+    ('Copacabana', 2),
+    ('Savassi', 3),
+    ('Moinhos de Vento', 4),
+    ('Barra', 5),
+    ('Asa Sul', 6),
+    ('Aldeota', 7);
 
--- Inserir dados na tabela usuario
-INSERT INTO usuario (cd_usuario, nm_usuario, idade, endereco, numero, cep, complemento, referencia, cd_bairro, cd_cidade, UF, telefone, e_mail) VALUES
-    (1, 'João Silva', 30, 'Rua A', 123, '12345-678', 'Apto 101', 'Próximo ao mercado', 1, 1, 'SP', '123456789', 'joao@email.com'),
-    (2, 'Maria Oliveira', 25, 'Rua B', 456, '54321-876', 'Casa 202', 'Próximo à escola', 2, 2, 'RJ', '987654321', 'maria@email.com'),
-    (3, 'Carlos Santos', 35, 'Av. C', 789, '98765-432', 'Sala 101', 'Ao lado do hospital', 3, 3, 'MG', '654321987', 'carlos@email.com'),
-    (4, 'Ana Souza', 28, 'Rua D', 101, '12345-678', 'Apto 303', 'Próximo ao parque', 4, 4, 'DF', '123456789', 'ana@email.com'),
-    (5, 'Felipe Lima', 22, 'Av. E', 111, '87654-321', 'Casa 404', 'Próximo à estação', 5, 5, 'BA', '987654321', 'felipe@email.com'),
-    (6, 'José Oliveira', 40, 'Rua F', 789, '54321-876', 'Apto 505', 'Próximo ao shopping', 6, 6, 'PR', '987654321', 'jose@email.com'),
-    (7, 'Fernanda Silva', 33, 'Av. G', 222, '98765-432', 'Casa 606', 'Próximo ao parque', 7, 7, 'PE', '123456789', 'fernanda@email.com');
+-- Populando a tabela usuario
+INSERT INTO usuario (nm_usuario, idade, endereco, numero, cep, complemento, referencia, cd_bairro, cd_cidade, UF, telefone, e_mail) VALUES
+    ('João Silva', 30, 'Rua A', 123, '12345-678', 'Apto 101', 'Próximo ao mercado', 1, 1, 'SP', '12345678', 'joao@email.com'),
+    ('Maria Santos', 25, 'Av. B', 456, '54321-876', 'Casa 202', 'Próximo à escola', 2, 2, 'RJ', '98765432', 'maria@email.com'),
+    ('Carlos Oliveira', 40, 'Rua C', 789, '98765-432', NULL, 'Próximo ao parque', 3, 3, 'MG', '87654321', 'carlos@email.com'),
+    ('Ana Pereira', 35, 'Av. D', 101, '13579-246', 'Bloco B', 'Próximo à praia', 4, 4, 'RS', '76543210', 'ana@email.com'),
+    ('Lucas Santos', 28, 'Rua E', 222, '24680-135', 'Casa 303', 'Próximo à academia', 5, 5, 'BA', '43210987', 'lucas@email.com'),
+    ('Mariana Oliveira', 32, 'Av. F', 333, '36985-741', 'Apto 404', 'Próximo ao shopping', 6, 6, 'DF', '9876-1234', 'mariana@email.com'),
+    ('Rafael Lima', 27, 'Rua G', 444, '14785-369', 'Casa 505', 'Próximo ao teatro', 7, 7, 'CE', '12345678', 'rafael@email.com');
 
--- Inserir dados na tabela quiz
-INSERT INTO quiz (cd_quiz, nm_quiz, ds_quiz, tema) VALUES
-    (1, 'Quiz de Matemática', 'Teste seus conhecimentos em matemática.', 'Matemática'),
-    (2, 'Quiz de História', 'Teste seus conhecimentos em história mundial.', 'História'),
-    (3, 'Quiz de Geografia', 'Teste seus conhecimentos em geografia mundial.', 'Geografia'),
-    (4, 'Quiz de Ciências', 'Teste seus conhecimentos em ciências naturais.', 'Ciências'),
-    (5, 'Quiz de Literatura', 'Teste seus conhecimentos em literatura mundial.', 'Literatura'),
-    (6, 'Quiz de Tecnologia', 'Teste seus conhecimentos em tecnologia.', 'Tecnologia'),
-    (7, 'Quiz de Esportes', 'Teste seus conhecimentos em esportes.', 'Esportes');
+-- Populando a tabela quiz
+INSERT INTO quiz (nm_quiz, ds_quiz, tema) VALUES
+    ('Quiz de Matemática', 'Teste seus conhecimentos em matemática.', 'Matemática'),
+    ('Quiz de História', 'Descubra o quanto você sabe sobre história.', 'História'),
+    ('Quiz de Ciências', 'Teste seus conhecimentos em ciências.', 'Ciências'),
+    ('Quiz de Geografia', 'Veja o quanto você conhece sobre geografia.', 'Geografia'),
+    ('Quiz de Tecnologia', 'Teste seus conhecimentos em tecnologia.', 'Tecnologia'),
+    ('Quiz de Entretenimento', 'Divirta-se com perguntas sobre entretenimento.', 'Entretenimento'),
+    ('Quiz de Esportes', 'Descubra o quanto você sabe sobre esportes.', 'Esportes');
 
--- Inserir dados na tabela questao
-INSERT INTO questao (cd_questao, cd_quiz, valor_questao, ds_questao) VALUES
-    (1, 1, 10, 'Qual é a fórmula da área de um triângulo?'),
-    (2, 2, 15, 'Quem foi o primeiro presidente do Brasil?'),
-    (3, 3, 20, 'Qual é a capital da França?'),
-    (4, 4, 25, 'Qual é o componente mais abundante na atmosfera da Terra?'),
-    (5, 5, 30, 'Quem escreveu "Dom Quixote"?'),
-    (6, 6, 10, 'O que significa a sigla HTML?'),
-    (7, 7, 15, 'Qual esporte é conhecido como "esporte bretão"?');
+-- Populando a tabela questao
+INSERT INTO questao (cd_quiz, valor_questao, ds_questao) VALUES
+    (1, 5, 'Quanto é 2 + 3?'),
+    (1, 3, 'Qual é a raiz quadrada de 9?'),
+    (2, 4, 'Quem foi o primeiro presidente do Brasil?'),
+    (2, 2, 'Em que ano ocorreu a Independência do Brasil?'),
+    (3, 5, 'Qual é a fórmula química da água?'),
+    (3, 3, 'Quem desenvolveu a teoria da relatividade?'),
+    (4, 4, 'Qual é a capital da Austrália?'),
+    (4, 2, 'Qual é o maior rio do mundo?'),
+    (5, 5, 'Quem é o fundador da Microsoft?'),
+    (5, 3, 'Qual é o sistema operacional mais utilizado no mundo?'),
+    (6, 4, 'Quem é o autor de Harry Potter?'),
+    (6, 2, 'Qual é o filme mais assistido de todos os tempos?'),
+    (7, 5, 'Em que esporte Michael Phelps se destacou nas Olimpíadas?'),
+    (7, 3, 'Qual é o esporte mais popular do mundo?');
 
--- Inserir dados na tabela opcao_questao
-INSERT INTO opcao_questao (cd_opcao_questao, cd_questao, ds_opcao, is_correta) VALUES
-    (1, 1, 'A = bh/2', 1),
-    (2, 1, 'A = πr²', 0),
-    (3, 2, 'Getúlio Vargas', 1),
-    (4, 2, 'Juscelino Kubitschek', 0),
-    (5, 3, 'Paris', 1),
-    (6, 3, 'Londres', 0),
-    (7, 4, 'Nitrogênio', 1),
-    (8, 4, 'Oxigênio', 0),
-    (9, 5, 'Miguel de Cervantes', 1),
-    (10, 5, 'William Shakespeare', 0),
-    (11, 6, 'Hypertext Markup Language', 1),
-    (12, 6, 'High-Level Programming Language', 0),
-    (13, 7, 'Futebol', 1),
-    (14, 7, 'Críquete', 0);
-
--- Inserir dados na tabela resposta_usuario
-INSERT INTO resposta_usuario (cd_resposta_usuario, cd_usuario, cd_questao, cd_opcao_questao, dt_fim) VALUES
-    (1, 1, 1, 1, '2023-11-20 12:30:00'),
-    (2, 2, 2, 3, '2023-11-21 14:45:00'),
-    (3, 3, 3, 5, '2023-11-22 10:30:00'),
-    (4, 4, 4, 7, '2023-11-23 18:15:00'),
-    (5, 5, 5, 9, '2023-11-24 22:00:00'),
-    (6, 6, 6, 2, '2023-11-25 16:30:00'),
-    (7, 7, 7, 4, '2023-11-26 14:00:00');
-
+-- Populando a tabela opcao_questao
+INSERT INTO opcao_questao (cd_questao, ds_opcao, is_correta) VALUES
+    (1, '5', 1),
+    (1, '6', 0),
+    (2, '3', 1),
+    (2, '4', 0),
+    (3, 'Getúlio Vargas', 0),
+    (3, 'Juscelino Kubitschek', 0),
+    (3, 'Marechal Deodoro', 1),
+    (3, 'Tancredo Neves', 0),
+    (4, '1822', 1),
+    (4, '1888', 0),
+    (5, 'H2O', 1),
+    (5, 'CO2', 0),
+    (6, 'Isaac Newton', 0),
+    (6, 'Albert Einstein', 1),
+    (7, 'Sydney', 1),
+    (7, 'Canberra', 0),
+    (8, 'Amazonas', 1),
+    (8, 'Nilo', 0),
+    (9, 'Bill Gates', 1),
+    (9, 'Steve Jobs', 0),
+    (10, 'Windows', 1),
+    (10, 'iOS', 0),
+    (11, 'J.K. Rowling', 1),
+    (11, 'George R.R. Martin', 0),
+    (12, 'Avatar', 0),
+    (12, 'Vingadores: Ultimato', 1),
+    (13, 'Natação', 1),
+    (13, 'Futebol', 0),
+    (14, 'Futebol', 1),
+    (14, 'Críquete', 0)
 ```
 # Principais consultas mapeadas baseadas em regras de negócio (DQL) (mínimo 6)
 ```
